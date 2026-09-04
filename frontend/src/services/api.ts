@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { AnalysisResultResponse, ParsedResume, ParsedJobDescription } from '../types';
 
-const API_BASE_URL = 'http://localhost:8000/api/v1';
+const API_BASE_URL = 'http://localhost:8080/api/v1';
 
 export const api = {
   uploadResume: async (file: File): Promise<ParsedResume> => {
@@ -17,7 +17,7 @@ export const api = {
     if (file) {
       const formData = new FormData();
       formData.append('file', file);
-      const response = await axios.post(`${API_BASE_URL}/job-description/analyze`, formData, {
+      const response = await axios.post(`${API_BASE_URL}/job-description/upload`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       return response.data;
