@@ -26,7 +26,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100 flex flex-col font-sans">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans">
       <Navbar
         onOpenPresets={() => setIsPresetsOpen(true)}
         onDownloadReport={() => setIsPdfOpen(true)}
@@ -42,7 +42,7 @@ export const App: React.FC = () => {
         />
       </main>
 
-      <footer className="border-t border-slate-800 bg-slate-950 py-6 px-6 text-center text-xs text-slate-500">
+      <footer className="border-t border-slate-200 bg-white py-6 px-6 text-center text-xs text-slate-500 shadow-sm">
         <p>© 2026 SkillGapAI • Production AI Job & Skill Gap Analyzer Platform • Built with FastAPI & React</p>
       </footer>
 
