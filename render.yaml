@@ -1,0 +1,29 @@
+services:
+  # Backend FastAPI Service
+  - type: web
+    name: ai-skill-gap-backend
+    env: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+
+  # Frontend Static Site
+  - type: static_site
+    name: ai-skill-gap-frontend
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    publishDir: dist
+    envVars:
+      - key: VITE_API_BASE_URL
+        fromService:
+          type: web
+          name: ai-skill-gap-backend
+          property: url
+          format: ${url}/api/v1
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
